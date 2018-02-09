@@ -1,0 +1,150 @@
+Day1
+https://docs.google.com/spreadsheets/d/1WZ4fxlZ6qS1xz0xdy0xzsS9nva3QydV0d66x2WazvR4/edit#gid=0
+오늘은 설치 + 가입
+Unity, monodevelop, documentation, standard Assets, vs, android build Suppor
+유니티 버전은 여러개 해놓는게 좋다. 그러니 유니티를 설치할 때 버전의 이름을 딴 폴더에 설치해 두는게 좋다.
+
+질문
+-왜 비쥬얼 스튜디오가 더 나은가?(많은 사람들이 쓰니 호환성등의 문제로. 플랫폼 간의 호환성은 Monodevelop이 더 좋기는 하다
+
+언리얼 vs 유니티
+공유가 편하면 좋은 툴
+게임 개발자는 출시는 해야 한다.
+평면도(othographic)/원근감을 적용(Isographic)
+quater view:othographic
+
+local transform: Parent에 대한 transform <-> global/world transform
+world 상의 위치를 유지하기 위해 local transform을 바꾼다.
+translation: 이동
+왠만하면 scale의 x,y,z 동일하게 하는 게 좋다.
+
+
+우클릭 후 wasd 할 수 있다(qe도 가능)
+
+Day2
+버전관리
+library 파일을 없애도 다음에 실행할 때 다시 생긴다.
+
+Notepad++(text editor)로 유니티를 볼 수 있다. 나중에 쓸일이 생길 수 있다(문제가 생길 경우)
+guid: 파일이 옮겨져도 연결고리는 유지할 수 있게
+스크립트 증을 생성 시에 로딩이 우측 아래에 표시된다. 그게 있는 동안엔 유니티에서 아무것도 할 수 없다.
+
+VS, edit->advance->문서서식(ctrl+K, ctrl+D)
+edit time vs play time(run time)
+
+2nd half:
+콘솔 설정: clear on play, error pause를 눌러라(collapse는 해제)
+	error-runtime error vs 실행 전에 뜨는 에러
+	첫번째 에러를 알 수 있다.(error pause)-처음할 땐 이리 하는 걸 추천.
+vs 언어: vs installer-> 수정-> 언어 팩 탭-> 영어와 한국어가 선택된 상태에서 수정
+	도구->옵션->국가별 설정-> 언어-> 영어
+
+컴포넌트 옆에 있는 톱니바퀴를 누르면 옵션들이 있는데 이에 옵션들을 추가할 것이다.
+public 게임오브젝트는 수동으로 연결시켜줄 수 있다.
+prefab: 미리 만들어진 게임 오브젝트(게임 오브젝트는 기본적으로 하이알키에 들어가 있어야한다)
+프리팹으로부터 만들어져 있는 하이알키에 있는 프리팹은 select(프리팹의 위치), revert(수정시 프리팹의 형태로 돌아간다), apply(수정한 걸 프리팹에 저장한다)라는 버튼들이 생긴다
+빨간 줄에 커서를 두고 alt+enter(quick fix)
+test script는 일종의 컴포넌트다. 그 컴포넌트가 게임오브젝트를 삭제하게 하는 것.
+삭제를 하면서 인덱스가 바뀌므로 foreach를 하던가 for문으로 뒤에서부터 삭제하는게 좋다.
+q.Destroy vs. DestroyImmediate(언제 destroy 하는 가 - runtime vs edit time)
+
+Day3
+prefab에서 바꾸면 prefab으로 만든 게임오브젝트들에 바로 적용된다. 다만 position과 rotation은 각 오브젝트마다 고유의 것은 가지고 있으므로 prefab에서 position과 rotation을 바꿔도
+	이미 만들어져있는 게임오브젝트에는 적용이 안된다.
+	굵은 글씨: 고유의 것.(프리팹과의 연결고리가 끊어진 상태)
+변수는 소문자, 함수, 클래스 등은 대문자
+
+import 열심히 하는 창이 있느넫 이게 무러하고 있는 거나면 asset스토어에서 받은 파일이 ASSET에서 복사하는 데 지금은 오래걸린 이유는 download 후 import에서 파일을 복사하는 것과
+그 파일들을 다음에도 쓰기 편하게 구조를 바꿔서 library에 저장하는 과정이 매우매우 느리다는 말씀
+여러 플레폼에서도 쓸 수 있게 또 나중에 바뀔 가능성이 높다아아아아아
+
+유니티의 에러 양상이 여러개 있는데, 그냥 넘어가도 되는 에러는 clear를 누르면 사라진다. 
+
+Shader: 픽셀을 채울때 그 픽셀의intensity를 결정하는 것.
+버전컨트롤 
+library는 서버에 올릴 필요가 없다.
+깃허브에 돈내고 산 에셋은 올리지 않게 조심하라.(공개되면 안되는 건 올리지 마라)
+
+Day4
+fetch: 사본을 다른 데에 복사해 두는 것. 보통 fetch는 풀을 하기 위해 하는 거라 쓸일은 거의 없긴 하다.
+올릴 필요가 없는데 올린 경우 
+git ignore- git에 올리고 내리는 파일에 관련이 없는 파일-repository를 처음 만들 때 .addignore를 추가한 상태에서 만들면 ignore해야 되는 파일 패턴을 얻을 수 있다.
+delete(keep local)-commit-push-> 이미 올라가있는 무시해야 되는 파일을 git에서 없애는 것.
+ctrl+R: Refractoring 기능
+폴링(Update의 역할)
+충돌의 종류
+	-colliding vs trigger
+	-이벤트 발생하려면 rigid body가 있어야 한다.
+
+Day5
+Time.deltaTime: 한 update 사이의 시간.
+kinematic: 절대 움직이면 안되는 장애물등(타힘으로 움직이지 않는다)
+transform.Translate를 쓴다는 것: 물리법칙으로 고려할 필요가 없다. =>장애물을 만들수는 없다. =>물리법칙에 위배되는 행위를 만들 수 없다. (kinematic)
+
+dynamic: 물리 엔진을 쓸것이라고 선언하는 것.=>AddForce
+
+UI
+anchoring (alt) UI 자체를 구석으로 내모는 것
+edit->preferences->external tools->
+
+deltaT = s/fr# fr#/s =  일초에 몇 프레임 수
+
+Day 6
+지금까지의 코드들: https://github.com/HandongUnityCamp2018
+Interval Code
+	if(Time.time - lastLogTime > 1.5f){}  
+
+둘레 길이 = 2*PI*R
+둘레의 임의의 위치:r*cos(theta), r*sin(theta) theta = 변수
+
+기타
+http://m.post.naver.com/viewer/postView.nhn?volumeNo=12414259&memberNo=37909464
+
+Day7
+특강
+	-proposal, 마일스톤 빌드
+	-IK-inverse kinematic - 살 수 있음.
+	-CBT: 제한된 몇명에게만 해줌(closed beta test)
+	-OBT: opened beta test
+	=> 출시
+
+Day 8
+	-해상도-> Canvas, Canvas Scaler->Scale with Screen Size
+	직접 조작
+	물리엔진에 의한 조작
+		-Rigidbody -> not kinematic(Constraints를 키면 좋다)
+		-getComponent<rigidbody>를 이용해 움직임 제어.(.AddForce(), .velocity())
+		-FixedUpdate()에서 힘 적용(불려지는 interval이 update이랑 다름. 물리 엔진 사용하는 건 여기서 한다.)
+	실린더 컬라이더는 엄청 비싸서 지원 안해준다. 
+	fixedUpdate에서는 deltaTime이라는 개념이 없다-물리엔진이 새로고침될 때마다 불려지기 때문(물리엔진과 같이 움직인다)
+	velocity 조정 등은 update에서 해도 되긴 하지만, fixedupdate에서 AddForce 등을 해야 된다.
+
+	사운드: bgm & effect(sfx)
+
+
+아이템
+	-속도 up
+	-hp 회복
+	-렌덤한 장소로 텔레포트
+	-일정 시간 점프 가능
+	-일정 시간동안 무적(에너미 없애면 추가 점수)
+장애물
+	-부딪치면 튕겨나감
+	-쿵쿵이(압사시 게임 오버)
+	-높낮이가 있는 지형
+에너미
+	-없어지지 않고 함정으로 유인해야 없어진다.
+	-자기네들끼리도 부딪힐 수 있다.
+
+CTRL K, C => 통채로 코멘트화 하는 것.
+public화 하지 않고 [SerializeField]로 시작할 수 있다
+
+
+Saving
+	-PlayerPrefs.Get*(), PlayerPrefs.Set*(), PlayerPrefs.Save()
+	var addNumber = PlayerPrefs.GetInt("Add_Number", 1)
+	addNumberButtonText.text = (addNumber + 1).ToString();
+	PlayerPrefs.SetInt("Add_NUMBER", addNumber+1);
+	PlayerPrefs.Save();
+
+WFX_ExplosiveSmokeGround Big
